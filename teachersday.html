@@ -1,0 +1,512 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Teacher's Day, Sir Randy Bello!</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #100e17;
+  --card: #201a27;
+  --text: #fff8df;
+  --gold: #ffd447;
+  --gold2: #fff0a0;
+  --paper: #fff9e9;
+  --ink: #48351b;
+}
+
+body.light {
+  --bg: #fff8df;
+  --card: #fff0bb;
+  --text: #493507;
+  --gold: #d89b00;
+  --gold2: #ffdc69;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: Georgia, serif;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at top, #60440f, transparent 60%),
+    var(--bg);
+  transition: background 0.8s, color 0.8s;
+}
+
+#sparkles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sparkle {
+  position: absolute;
+  color: var(--gold2);
+  text-shadow: 0 0 8px gold, 0 0 20px orange;
+  animation: shimmer var(--speed) ease-in-out infinite;
+  animation-delay: var(--delay);
+  opacity: 0;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(.3) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4) rotate(180deg);
+  }
+}
+
+header {
+  position: relative;
+  z-index: 2;
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #ffd44777;
+}
+
+.logo {
+  color: var(--gold);
+  font-size: clamp(17px, 3vw, 27px);
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid var(--gold);
+  border-radius: 30px;
+  padding: 12px 18px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 14px;
+  transition: all .35s ease;
+}
+
+button:hover {
+  background: var(--gold);
+  color: #291c00;
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px #ffd44777;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, 92%);
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.intro {
+  text-align: center;
+  padding: 20px;
+  animation: fadeIn 1.3s ease both;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: clamp(36px, 5vw, 57px);
+  line-height: 1.2;
+  color: var(--gold);
+  text-shadow: 0 0 22px #ffcf4770;
+  margin-bottom: 22px;
+}
+
+.heart {
+  color: #ffd447;
+  display: inline-block;
+  animation: beat 1.5s infinite;
+}
+
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+.intro p {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.9;
+  margin: 15px 0;
+}
+
+.highlight {
+  color: var(--gold);
+  font-style: italic;
+  font-size: 23px;
+  margin-top: 24px;
+}
+
+.letter-area {
+  text-align: center;
+  perspective: 1000px;
+}
+
+.envelope {
+  width: 100%;
+  max-width: 440px;
+  height: 300px;
+  position: relative;
+  margin: 0 auto 25px;
+  border-radius: 8px;
+  background: linear-gradient(140deg, #fff0a0, #d99a12);
+  box-shadow: 0 15px 45px #0005, 0 0 30px #ffd44733;
+  transition: margin .8s;
+}
+
+.flap {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(140deg, #fff0a0, #e7ae28);
+  clip-path: polygon(0 0, 100% 0, 50% 65%);
+  transform-origin: top;
+  transition: transform .9s ease;
+  z-index: 4;
+}
+
+.pocket {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(140deg, #ffe37b, #c8860b);
+  clip-path: polygon(0 100%, 0 0, 50% 57%, 100% 0, 100% 100%);
+  border-radius: 8px;
+  z-index: 2;
+}
+
+.letter {
+  position: absolute;
+  left: 5%;
+  bottom: 8px;
+  width: 90%;
+  height: 275px;
+  overflow-y: auto;
+  padding: 22px 20px;
+  text-align: left;
+  line-height: 1.7;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--paper);
+  border-radius: 5px;
+  transition: transform 1s ease, height 1s ease;
+  z-index: 3;
+}
+
+.letter h2 {
+  text-align: center;
+  font-size: 21px;
+  color: #9c6907;
+  margin-bottom: 16px;
+}
+
+.letter p {
+  margin-bottom: 12px;
+}
+
+.letter .sign {
+  text-align: right;
+  color: #94630c;
+  font-style: italic;
+  margin-top: 18px;
+}
+
+.seal {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 38px;
+  z-index: 6;
+  filter: drop-shadow(0 0 10px gold);
+  transition: opacity .3s;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope.open .letter {
+  transform: translateY(-170px);
+  height: 430px;
+  z-index: 5;
+  box-shadow: 0 0 25px #0004;
+}
+
+.envelope.open {
+  margin-bottom: 190px;
+}
+
+.envelope.open .seal {
+  opacity: 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.primary {
+  background: var(--gold);
+  color: #352400;
+  font-weight: bold;
+}
+
+footer {
+  position: relative;
+  z-index: 1;
+  padding: 25px 12px;
+  text-align: center;
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 1px;
+  line-height: 2;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 760px) {
+  header {
+    padding: 16px 5%;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin: 30px auto;
+  }
+
+  .envelope.open .letter {
+    height: 410px;
+    transform: translateY(-145px);
+  }
+
+  .envelope.open {
+    margin-bottom: 160px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="sparkles"></div>
+
+<header>
+  <div class="logo">🎓 Happy Teacher's Day <span class="heart">♥</span></div>
+  <button id="themeButton" onclick="toggleTheme()">
+    ☀️ Light Mode
+  </button>
+</header>
+
+<main>
+
+  <section class="intro">
+    <div class="eyebrow">A SPECIAL TRIBUTE TO AN AMAZING TEACHER</div>
+
+    <h1>Sir Randy<br>Bello <span class="heart">♥</span></h1>
+
+    <p><strong>To our wonderful Web Development Instructor,</strong></p>
+
+    <p>
+      Happy Teacher's Day! Thank you for sharing your
+      knowledge, patience, and passion for teaching.
+    </p>
+
+    <p>
+      Your lessons in HTML, CSS, and JavaScript help us
+      discover our creativity and develop our skills.
+      Your guidance encourages us to learn, improve,
+      and never give up when coding gets difficult.
+    </p>
+
+    <p>
+      Thank you for being a teacher who guides, inspires,
+      and makes a difference in the lives of students.
+      May your days be filled with happiness, success,
+      and countless blessings.
+    </p>
+
+    <div class="highlight">
+      We appreciate you, Sir Randy! <span class="heart">♥</span>
+    </div>
+  </section>
+
+  <section class="letter-area">
+
+    <div class="envelope" id="envelope">
+
+      <article class="letter">
+        <h2>Dear Sir Randy Bello, 💛</h2>
+
+        <p>Happy Teacher's Day!</p>
+
+        <p>
+          On this special day, I want to express my sincere
+          gratitude for your dedication and commitment
+          to teaching Web Development.
+        </p>
+
+        <p>
+          Thank you for patiently explaining our lessons
+          and helping us learn HTML, CSS, and JavaScript.
+          Your guidance motivates us to explore new ideas,
+          solve problems, and become better learners.
+        </p>
+
+        <p>
+          I appreciate not only the knowledge you share
+          but also the encouragement you give us.
+          Every lesson is an opportunity to grow,
+          improve, and prepare for our future.
+        </p>
+
+        <p>
+          May you continue to inspire students and touch
+          many lives through your passion for teaching.
+          You deserve happiness, good health, and success
+          in everything you do.
+        </p>
+
+        <p>
+          Thank you for being an amazing instructor.
+          Happy Teacher's Day, Sir Randy Bello! ✨
+        </p>
+
+        <div class="sign">
+          With respect and gratitude,<br>
+          Your Web Development Student 💛
+        </div>
+      </article>
+
+      <div class="flap"></div>
+      <div class="pocket"></div>
+      <div class="seal">💛</div>
+
+    </div>
+
+    <div class="actions">
+      <button class="primary" id="openButton" onclick="toggleLetter()">
+        💌 Open Letter
+      </button>
+
+      <button onclick="showMessage()">
+        ✨ Special Message
+      </button>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  MADE WITH <span class="heart">♥</span> AND GRATITUDE
+  <br>
+  HAPPY TEACHER'S DAY, SIR RANDY BELLO! ✨
+</footer>
+
+<script>
+const envelope = document.getElementById("envelope");
+const openButton = document.getElementById("openButton");
+const themeButton = document.getElementById("themeButton");
+
+// Open and close the letter
+function toggleLetter() {
+  envelope.classList.toggle("open");
+
+  const isOpen = envelope.classList.contains("open");
+
+  openButton.textContent = isOpen
+    ? "💌 Close Letter"
+    : "💌 Open Letter";
+}
+
+// Toggle between dark and light mode
+function toggleTheme() {
+  document.body.classList.toggle("light");
+
+  const isLight = document.body.classList.contains("light");
+
+  themeButton.textContent = isLight
+    ? "🌙 Dark Mode"
+    : "☀️ Light Mode";
+}
+
+// Display a special message
+function showMessage() {
+  alert(
+    "💛 Happy Teacher's Day, Sir Randy Bello! 💛\n\n" +
+    "Thank you for teaching, guiding, and inspiring us. " +
+    "Your patience and dedication make a difference. " +
+    "May you always be blessed with happiness, good health, " +
+    "and success. Keep inspiring future developers! ✨"
+  );
+}
+
+// Generate the sparkling, shimmering background
+const sparkleContainer = document.getElementById("sparkles");
+const symbols = ["✦", "✧", "✨", "⋆", "·"];
+
+for (let i = 0; i < 85; i++) {
+  const star = document.createElement("span");
+
+  star.className = "sparkle";
+  star.textContent =
+    symbols[Math.floor(Math.random() * symbols.length)];
+
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.fontSize = (8 + Math.random() * 18) + "px";
+
+  star.style.setProperty(
+    "--speed",
+    (2 + Math.random() * 4) + "s"
+  );
+
+  star.style.setProperty(
+    "--delay",
+    (-Math.random() * 5) + "s"
+  );
+
+  sparkleContainer.appendChild(star);
+}
+</script>
+
+</body>
+</html>
